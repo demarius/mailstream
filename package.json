@@ -1,0 +1,12 @@
+{
+  "name"          : "mailstream",
+  "description"   : "nodejs imap mail stream wrapper",
+  "url"           : "http://github.com/mawi12345/mail-stream",
+  "keywords"      : ["imap", "mail", "stream"],
+  "author"        : "Martin Wind <mawi1988@gmail.com>",
+  "contributors"  : [],
+  "dependencies"  : ["imap", "mailparser", "moment"],
+  "lib"           : "lib",
+  "main"          : "./lib/mailstream",
+  "version"       : "0.1.0"
+}
