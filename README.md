@@ -22,25 +22,24 @@ Example
 
 var MailStream = require('mailstream');
 
-mailstream = new MailStream({
-	user: 'CHANGEME@gmail.com',
-	password: 'CHANGEME',
-	host: 'imap.gmail.com',
-	port: 993,
-	secure: true
-});
+MailStream({
+    imap: {
+        user: 'CHANGEME@gmail.com',
+        password: 'CHANGEME',
+        host: 'imap.gmail.com',
+        port: 993,
+        secure: true
+    }
+}, function (error, mailstream) {
+    mailstream.on('data', function(mail) {
+        console.log(mail)
+    })
 
-
-mailstream.on('data', function(mail){
-	console.log(mail);
-});
-
-process.on('SIGINT', function() {
-	console.log('\nAbout to exit.');
-	mailstream.disconnect();
-	console.log('Got mails until '+mailstream.since.format('LLL'));
-	process.exit();
-});
-
-
+    process.on('SIGINT', function() {
+        console.log('\nAbout to exit.')
+        mailstream.disconnect()
+        console.log('Got mails until '+mailstream.since)
+        process.exit()
+    })
+})
 ```
