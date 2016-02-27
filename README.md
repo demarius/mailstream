@@ -28,7 +28,7 @@ MailStream({
         password: 'CHANGEME',
         host: 'imap.gmail.com',
         port: 993,
-        secure: true
+        tls: true
     }
 }, function (error, mailstream) {
     mailstream.on('data', function(mail) {
