@@ -29,6 +29,9 @@ MailStream({
         host: 'imap.gmail.com',
         port: 993,
         tls: true
+    },
+    filter: function (mail) {
+        return mail.headers['in-reply-to'] == 'header'
     }
 }, function (error, mailstream) {
     mailstream.on('data', function(mail) {
