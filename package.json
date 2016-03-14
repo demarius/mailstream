@@ -5,7 +5,11 @@
   "keywords"      : ["imap", "mail", "stream"],
   "author"        : "Demarius Chrite <chrite.demarius@gmail.com>",
   "contributors"  : [],
-  "dependencies"  : ["imap", "mailparser", "moment"],
+  "dependencies"  : {
+    "imap": "0.8.16",
+    "mailparser": "0.5.2",
+    "moment": "*"
+  },
   "lib"           : "lib",
   "main"          : "./lib/mailstream",
   "version"       : "0.0.1"
