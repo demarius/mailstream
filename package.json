@@ -8,7 +8,6 @@
   "dependencies"  : {
     "imap": "0.8.16",
     "mailparser": "0.5.2",
-    "moment": "*",
     "nodemailer": "*"
   },
   "lib"           : "lib",
