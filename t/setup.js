@@ -1,2 +1,4 @@
 var nodemailer = require('nodemailer')
-var mandril = require('nodemailer-mandrill-transport')
+var mandrill = require('nodemailer-mandrill-transport')
+
+mailer = nodemailer.createTransport(mandrill())
