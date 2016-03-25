@@ -1,4 +1,10 @@
 var nodemailer = require('nodemailer')
-var mandrill = require('nodemailer-mandrill-transport')
 
-mailer = nodemailer.createTransport(mandrill())
+mailer = nodemailer.createTransport({
+    auth: {
+        user: 'randomimapaddress@gmx.com',
+        pass: '0nSw1tching'
+    }
+})
+
+console.log(mailer)
