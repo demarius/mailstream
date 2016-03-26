@@ -7,4 +7,4 @@ mailer = nodemailer.createTransport({
     }
 })
 
-console.log(mailer)
+module.exports = mailer
