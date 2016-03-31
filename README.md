@@ -30,7 +30,7 @@ MailStream({
         port: 993,
         tls: true
     },
-    filter: function (mail) {
+    filter: function (mail) { // Optional
         return mail.headers['in-reply-to'] == 'header'
     }
 }, function (error, mailstream) {
