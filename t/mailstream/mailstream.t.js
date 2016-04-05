@@ -9,6 +9,9 @@ MailStream({
         port: 993,
         tls: true
 }, function (error, mailstream) {
+    mailstream.on('data', function (mail) {
+        console.log(mail)
+    })
     mailer.sendMail({
         from: 'test@testing.mailstream.com',
         to: 'randomimapaddress@gmx.com',
