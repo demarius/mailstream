@@ -34,11 +34,11 @@ MailStream({
         return mail.headers['in-reply-to'] == 'header'
     }
 }, function (error, mailstream) {
-    mailstream.on('data', function(mail) {
+    mailstream.on('data', function (mail) {
         console.log(mail)
     })
 
-    process.on('SIGINT', function() {
+    process.on('SIGINT', function () {
         console.log('\nAbout to exit.')
         mailstream.disconnect()
         console.log('Got mails until '+mailstream.since)
