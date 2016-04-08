@@ -18,7 +18,10 @@ MailStream({
         from: 'test@testing.mailstream.com',
         to: 'randomimapaddress@gmx.com',
         subject: '',
-        html: ''
+        html: '',
+        headers: {
+            'mailstream-test-header': 'mailstream-test'
+        }
     }, function (err, info) {
         console.log(info)
     })
