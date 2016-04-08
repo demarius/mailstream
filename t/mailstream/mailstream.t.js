@@ -8,6 +8,9 @@ MailStream({
         host: 'imap.gmx.com',
         port: 993,
         tls: true
+    },
+    filter: function (mail) {
+        return mail.headers['mailstream-test-header'] ? true : false
     }
 }, function (error, mailstream) {
     mailstream.on('data', function (mail) {
