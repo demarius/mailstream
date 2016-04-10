@@ -9,7 +9,8 @@
     "imap": "0.8.16",
     "mailparser": "0.5.2",
     "nodemailer": "*",
-    "nodemailer-mandrill-transport": "*"
+    "nodemailer-mandrill-transport": "*",
+    "cadence": "*"
   },
   "lib"           : "lib",
   "main"          : "./lib/mailstream",
