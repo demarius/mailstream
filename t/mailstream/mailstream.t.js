@@ -1,4 +1,6 @@
-require('cadence')(function (async) {
+var cadence = require('cadence')
+
+var test = cadence(function (async) {
     var mailer = require('../setup'),
         MailStream = require('../../lib/mailstream')
 
