@@ -2,18 +2,21 @@ require('cadence')(function (async) {
     var mailer = require('../setup'),
         MailStream = require('../../lib/mailstream')
 
-    MailStream({
-        imap: {
-            user: 'randomimapaddress@gmx.com',
-            password: '0nSw1tching',
-            host: 'imap.gmx.com',
-            port: 993,
-            tls: true
-        },
-        filter: function (mail) {
-            return mail.headers['mailstream-test-header'] ? true : false
-        }
-    }, function (error, mailstream) {
+    async(function () {
+        MailStream({
+            imap: {
+                user: 'randomimapaddress@gmx.com',
+                password: '0nSw1tching',
+                host: 'imap.gmx.com',
+                port: 993,
+                tls: true
+            },
+            filter: function (mail) {
+                return mail.headers['mailstream-test-header'] ? true : false
+            }
+        }, async())
+
+    }, function (mailstream) {
         mailstream.on('data', function (mail) {
             console.log(mail)
         })
@@ -26,8 +29,9 @@ require('cadence')(function (async) {
             headers: {
                 'mailstream-test-header': 'mailstream-test'
             }
-        }, function (err, info) {
-            console.log(info)
-        })
+        }, async())
+
+    }, function (info) {
+        console.log(info)
     })
 })
