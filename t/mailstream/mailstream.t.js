@@ -36,4 +36,6 @@ var test = cadence(function (async) {
     }, function (info) {
         console.log(info)
     })
+})(function (err) {
+    if (err) throw err
 })
