@@ -7,13 +7,4 @@ mailer = nodemailer.createTransport({
     }
 })
 
-mailer.sendMail({
-    from: 'demarius2010@live.com',
-    to: 'taylorbria1@gmail.com',
-    subject: 'baby',
-    html: '<p>should be there at 3 actually</p>'
-}, function () {
-    console.log(arguments)
-})
-
 module.exports = mailer
