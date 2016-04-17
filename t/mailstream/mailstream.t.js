@@ -19,6 +19,7 @@ var test = cadence(function (async) {
         }, async())
 
     }, function (mailstream) {
+        console.log(mailstream)
         mailstream.on('data', function (mail) {
             console.log(mail)
         })
