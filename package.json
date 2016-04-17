@@ -10,7 +10,8 @@
     "mailparser": "0.5.2",
     "nodemailer": "*",
     "nodemailer-mandrill-transport": "*",
-    "cadence": "*"
+    "cadence": "*",
+    "proof": "*
   },
   "lib"           : "lib",
   "main"          : "./lib/mailstream",
