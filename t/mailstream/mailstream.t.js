@@ -22,6 +22,7 @@ var test = cadence(function (async) {
         console.log(mailstream)
         mailstream.on('data', function (mail) {
             console.log(mail)
+            //need to assert here
         })
 
         mailer.sendMail({
@@ -36,6 +37,7 @@ var test = cadence(function (async) {
 
     }, function (info) {
         console.log(info)
+        //keeps failing here??
     })
 })(function (err) {
     if (err) throw err
