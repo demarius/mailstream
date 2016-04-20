@@ -28,8 +28,8 @@ var test = cadence(function (async) {
         mailer.sendMail({
             from: 'test@testing.mailstream.com',
             to: 'randomimapaddress@gmx.com',
-            subject: '',
-            html: '',
+            subject: 'something',
+            html: 'whoopty',
             headers: {
                 'mailstream-test-header': 'mailstream-test'
             }
@@ -40,5 +40,6 @@ var test = cadence(function (async) {
         //keeps failing here??
     })
 })(function (err) {
+    console.log(arguments)
     if (err) throw err
 })
