@@ -32,7 +32,8 @@ MailStream({
     },
     filter: function (mail) { // Optional
         return mail.headers['in-reply-to'] == 'header'
-    }
+    },
+    box: 'INBOX' // Optional. Can be 'OUTBOX', 'DRAFTS', etc.
 }, function (error, mailstream) {
     mailstream.on('data', function (mail) {
         console.log(mail)
