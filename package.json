@@ -16,5 +16,5 @@
   },
   "lib"           : "lib",
   "main"          : "./lib/mailstream",
-  "version"       : "0.0.1"
+  "version"       : "0.0.2"
 }
