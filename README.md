@@ -20,18 +20,20 @@ Example
 
 ```javascript
 
-var MailStream = require('mailstream');
+var MailStream = require('mailstream')
 
 MailStream({
     imap: {
-        user: 'CHANGEME@gmail.com',
-        password: 'CHANGEME',
+        user: 'mailstreamtest@gmail.com',
+        password: 'm@1lstr3@m%',
         host: 'imap.gmail.com',
         port: 993,
         tls: true
     },
-    filter: function (mail) { // Optional
-        return mail.headers['in-reply-to'] == 'header'
+    filter: function (mail) { // Optional.
+        //mail parsed through MailParser.
+
+        return mail.headers['in-reply-to'] == 'header-value'
     },
     box: 'INBOX' // Optional. Can be 'OUTBOX', 'DRAFTS', etc.
 }, function (error, mailstream) {
