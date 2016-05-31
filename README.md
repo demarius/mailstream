@@ -15,8 +15,8 @@ Installation
 
     npm install mailstream
 
-Example
-=======
+IMAP
+====
 
 ```javascript
 
@@ -47,5 +47,18 @@ MailStream({
         console.log('Got mails until '+mailstream.since)
         process.exit()
     })
+})
+```
+
+Exchange Web Services
+=====================
+
+```javascript
+MailStream({
+    ews: {
+        user: 'doctor@hospital.com', //supports @outlook, Exchange online, Exchange 2010 SP_1+, etc
+        password: 'I\'m supposed to trust you?',
+        version: '2013' //defaults to 2010 SP_1
+    }
 })
 ```
