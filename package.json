@@ -12,7 +12,7 @@
     "nodemailer": "*",
     "nodemailer-mandrill-transport": "*",
     "cadence": "*",
-    "proof": "*
+    "proof": "*"
   },
   "lib"           : "lib",
   "main"          : "./lib/mailstream",
