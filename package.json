@@ -5,13 +5,15 @@
   "keywords"      : ["imap", "mail", "stream"],
   "author"        : "Demarius Chrite <chrite.demarius@gmail.com>",
   "contributors"  : [],
+  "devDependencies" : {
+    "cadence": "*"
+  },
   "dependencies"  : {
     "imap": "0.8.16",
     "mailparser": "0.5.2",
     "ews-javascript-api": "*",
     "nodemailer": "*",
     "nodemailer-mandrill-transport": "*",
-    "cadence": "*",
     "proof": "*"
   },
   "lib"           : "lib",
