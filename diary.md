@@ -4,3 +4,5 @@ Integrate Exchange/Autodiscover.
 - - 2010 should work according to this: https://msdn.microsoft.com/en-us/library/office/hh312849(v=exchg.140).aspx
 - - but it is not listed as compatible here: https://msdn.microsoft.com/en-us/library/office/dn458792(v=exchg.150).aspx
 Need to figure out how to authorize the mailer.
+
+Could think about rewriting with Cadence, though it wouldn't really change much.
