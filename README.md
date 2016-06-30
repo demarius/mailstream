@@ -3,6 +3,8 @@ mail-stream
 
 nodejs imap mail stream wrapper
 
+Get notified of mailbox updates - inbox, outbox, etc.
+
 Requirements
 ============
 
