@@ -7,10 +7,10 @@ var test = cadence(function (async) {
     async(function () {
         MailStream({
             imap: {
-                user: 'randomimapaddress@gmx.com',
-                password: '0nSw1tching',
-                host: 'imap.gmx.com',
-                port: 993,
+                user: '',
+                password: '',
+                host: '',
+                port: '',
                 tls: true
             },
             filter: function (mail) {
