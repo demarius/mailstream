@@ -2,7 +2,7 @@ var cadence = require('cadence')
 
 var test = cadence(function (async) {
     var mailer = require('./mailer'),
-        MailStream = require('../lib/mailstream')
+        MailStream = require('../index.js')
 
     async(function () {
         MailStream({
