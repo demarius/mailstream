@@ -16,7 +16,6 @@
     "nodemailer-mandrill-transport": "*",
     "proof": "*"
   },
-  "lib"           : "lib",
-  "main"          : "./lib/mailstream",
+  "main"          : "./index.js",
   "version"       : "0.0.2"
 }
