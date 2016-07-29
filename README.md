@@ -9,7 +9,7 @@ Requirements
 ============
 
 * [node.js](http://nodejs.org/) -- v0.10.0 or newer
-* An IMAP server -- tested with gmail
+* An IMAP or EWS server
 
 
 Installation
