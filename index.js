@@ -16,12 +16,6 @@ function mailstream (options, callback) {
     var that = this
 
     if (options.imap) {
-        imap()
-    } else if (options.ews) {
-        exchange()
-    }
-
-    function imap () {
         that._imapConfig = options.imap
         that._imap = new Imap(that._imapConfig)
 
@@ -40,37 +34,6 @@ function mailstream (options, callback) {
         that._imap.connect()
     }
 
-    function exchange () {
-        var uri
-        this._ewsConfig = options.ews
-        this._ewsConfig.version = options.ews.version || '2010_SP1'
-
-        if (uri = (this._ewsConfig.uri || this._ewsConfig.URI)) {
-        }
-    }
-
-    function Autodiscover (callback) {
-
-        this.autod = new ews.AutodiscoverService(new ews.Uri(
-                    "https://autodiscover-s.outlook.com/autodiscover/autodiscover.svc"
-                    ))
-        this._ews = new ews.ExchangeService(ews.ExchangeVersion['Exchange' + options.ews.version])
-        this._ews.Credentials = new ews.ExchangeCredentials(options.ews.user, options.ews.password)
-
-        this.autod.Credentials = this._ews.Credentials
-
-        autod.GetUserSettings([ options.ews.user ], [
-            ews.UserSettingName.ExternalEwsUrl,
-            ews.UserSettingName.UserDisplayName,
-            ews.UserSettingName.ActiveDirectoryServer,
-            ews.UserSettingName.AlternateMailboxes
-        ]).then(function (response) {
-            console.log('Autodiscovered URL', response.Responses[0].Settings['58'])
-                this._ews.Url = new ews.Uri(response.Responses[0].Settings['58'])
-        }, function (e) {
-            console.log(e)
-        })
-    }
 }
 
 mailstream.prototype = Object.create(Readable.prototype, {
@@ -151,6 +114,38 @@ mailstream.prototype._search = function () {
                 that.since = new Date
             })
         })
+    })
+}
+
+function exchange () {
+    var uri
+    this._ewsConfig = options.ews
+    this._ewsConfig.version = options.ews.version || '2010_SP1'
+
+    if (uri = (this._ewsConfig.uri || this._ewsConfig.URI)) {
+    }
+}
+
+function Autodiscover (callback) {
+
+    this.autod = new ews.AutodiscoverService(new ews.Uri(
+                "https://autodiscover-s.outlook.com/autodiscover/autodiscover.svc"
+                ))
+    this._ews = new ews.ExchangeService(ews.ExchangeVersion['Exchange' + options.ews.version])
+    this._ews.Credentials = new ews.ExchangeCredentials(options.ews.user, options.ews.password)
+
+    this.autod.Credentials = this._ews.Credentials
+
+    autod.GetUserSettings([ options.ews.user ], [
+        ews.UserSettingName.ExternalEwsUrl,
+        ews.UserSettingName.UserDisplayName,
+        ews.UserSettingName.ActiveDirectoryServer,
+        ews.UserSettingName.AlternateMailboxes
+    ]).then(function (response) {
+        console.log('Autodiscovered URL', response.Responses[0].Settings['58'])
+            this._ews.Url = new ews.Uri(response.Responses[0].Settings['58'])
+    }, function (e) {
+        console.log(e)
     })
 }
 
