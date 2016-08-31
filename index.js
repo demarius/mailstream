@@ -126,7 +126,7 @@ function exchange () {
     }
 }
 
-function Autodiscover (callback) {
+function AutodiscoverUrl (options, callback) {
 
     this.autod = new ews.AutodiscoverService(new ews.Uri(
                 "https://autodiscover-s.outlook.com/autodiscover/autodiscover.svc"
@@ -143,7 +143,8 @@ function Autodiscover (callback) {
         ews.UserSettingName.AlternateMailboxes
     ]).then(function (response) {
         console.log('Autodiscovered URL', response.Responses[0].Settings['58'])
-            this._ews.Url = new ews.Uri(response.Responses[0].Settings['58'])
+        callback(null, response.Responses[0].Settings['58'])
+            //this._ews.Url = new ews.Uri(response.Responses[0].Settings['58'])
     }, function (e) {
         console.log(e)
     })
