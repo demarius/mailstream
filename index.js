@@ -126,6 +126,19 @@ function exchange () {
     }
 }
 
+function connect (options) {
+    imap.once('ready', function () {
+        imap.openBox(options.box, true, function (error, box) {
+            if (error) callback (error)
+            that._imap.on('mail', function (count) {
+                that._search()
+            })
+
+            //callback(null, )
+        })
+    })
+}
+
 function AutodiscoverUrl (options, callback) {
 
     this.autod = new ews.AutodiscoverService(new ews.Uri(
