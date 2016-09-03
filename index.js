@@ -1,4 +1,4 @@
-var Imap = require('imap'),
+const Imap = require('imap'),
     ews = require('ews-javascript-api'),
     Readable = require('stream').Readable,
     MailParser = require('mailparser').MailParser
