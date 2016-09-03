@@ -117,12 +117,12 @@ mailstream.prototype._search = function () {
     })
 }
 
-function exchange () {
-    var uri
-    this._ewsConfig = options.ews
-    this._ewsConfig.version = options.ews.version || '2010_SP1'
+function exchange (options) {
+    var uri,
+        ewsConfig = options.ews,
+        ewsConfig.version = options.ews.version || '2010_SP1'
 
-    if (uri = (this._ewsConfig.uri || this._ewsConfig.URI)) {
+    if (uri = (ewsConfig.uri || ewsConfig.URI)) {
     }
 }
 
