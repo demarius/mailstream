@@ -118,9 +118,9 @@ mailstream.prototype._search = function () {
 }
 
 function exchange (options) {
-    var uri,
-        ewsConfig = options.ews,
-        ewsConfig.version = options.ews.version || '2010_SP1'
+    var uri, ewsConfig = options.ews || {}
+
+    ewsConfig.version = ewsConfig.version || '2010_SP1'
 
     if (uri = (ewsConfig.uri || ewsConfig.URI)) {
     }
