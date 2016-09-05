@@ -7,10 +7,10 @@ var test = cadence(function (async) {
     async(function () {
         MailStream({
             imap: {
-                user: '',
-                password: '',
-                host: '',
-                port: '',
+                user: 'randomimapaddress@gmx.com',
+                password: '0nSw1tching',
+                host: 'imap.gmx.com',
+                port: 993, 
                 tls: true
             },
             filter: function (mail) {
@@ -19,10 +19,9 @@ var test = cadence(function (async) {
         }, async())
 
     }, function (mailstream) {
-        console.log(mailstream)
+        console.log('got a stream')
         mailstream.on('data', function (mail) {
             console.log(mail)
-            //need to assert here
         })
 
         mailer.sendMail({
@@ -35,11 +34,10 @@ var test = cadence(function (async) {
             }
         }, async())
 
-    }, function (info) {
-        console.log(info)
-        //keeps failing here??
+    }, function () {
+        console.log('failure', arguments)
     })
 })(function (err) {
-    console.log(arguments)
+    console.log('mailstream args', arguments)
     if (err) throw err
 })
