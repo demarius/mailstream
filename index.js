@@ -13,25 +13,25 @@ function mailstream (options, callback) {
     this._filter = options.filter || function () { return true }
     if (!this._options.box) this._options.box = 'INBOX'
     if (!this._options.mailparser) this._options.mailparser = {}
-    var that = this
+    var stream = this
 
     if (options.imap) {
-        that._imapConfig = options.imap
-        that._imap = new Imap(that._imapConfig)
+        stream._imapConfig = options.imap
+        stream._imap = new Imap(stream._imapConfig)
 
-        that._imap.once('ready', function () {
-            that._imap.openBox(that._options.box, true, function (error, box) {
+        stream._imap.once('ready', function () {
+            stream._imap.openBox(stream._options.box, true, function (error, box) {
                 if (error) callback (error)
-                that._imap.on('mail', function (count) {
-                    that._search()
+                stream._imap.on('mail', function (count) {
+                    stream._search()
                 })
 
-                callback(null, that)
+                callback(null, stream)
             })
         })
 
-        that._imap.once('error', function (e) { callback(e) })
-        that._imap.connect()
+        stream._imap.once('error', function (e) { callback(e) })
+        stream._imap.connect()
     }
 
 }
