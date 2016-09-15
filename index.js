@@ -15,25 +15,22 @@ function mailstream (options, callback) {
     if (!this._options.mailparser) this._options.mailparser = {}
     var stream = this
 
-    if (options.imap) {
-        stream._imapConfig = options.imap
-        stream._imap = new Imap(stream._imapConfig)
+    stream._imapConfig = options.imap
+    stream._imap = new Imap(stream._imapConfig)
 
-        stream._imap.once('ready', function () {
-            stream._imap.openBox(stream._options.box, true, function (error, box) {
-                if (error) callback (error)
-                stream._imap.on('mail', function (count) {
-                    stream._search()
-                })
-
-                callback(null, stream)
+    stream._imap.once('ready', function () {
+        stream._imap.openBox(stream._options.box, true, function (error, box) {
+            if (error) callback (error)
+            stream._imap.on('mail', function (count) {
+                stream._search()
             })
+
+            callback(null, stream)
         })
+    })
 
-        stream._imap.once('error', function (e) { callback(e) })
-        stream._imap.connect()
-    }
-
+    stream._imap.once('error', function (e) { callback(e) })
+    stream._imap.connect()
 }
 
 mailstream.prototype = Object.create(Readable.prototype, {
