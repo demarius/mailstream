@@ -4,23 +4,28 @@ const Imap = require('imap'),
     MailParser = require('mailparser').MailParser
 
 function mailstream (options, callback) {
-    if (!(this instanceof mailstream)) return new mailstream(options, callback)
+    if (!(this instanceof mailstream)) {
+        return new mailstream(options, callback)
+    }
 
     Readable.call(this, { objectMode: true })
 
     this._options = options || {}
     this.since = new Date
     this._filter = options.filter || function () { return true }
-    if (!this._options.box) this._options.box = 'INBOX'
-    if (!this._options.mailparser) this._options.mailparser = {}
-    var stream = this
+    this._options.mailparser = this._options.mailparser || {}
 
-    stream._imapConfig = options.imap
-    stream._imap = new Imap(stream._imapConfig)
+    const stream = this
+    const inbox = this._options.box || 'INBOX'
+
+    stream._imap = new Imap(options.imap)
 
     stream._imap.once('ready', function () {
-        stream._imap.openBox(stream._options.box, true, function (error, box) {
-            if (error) callback (error)
+        stream._imap.openBox(inbox, true, function (error, box) {
+            if (error) {
+                callback (error)
+            }
+
             stream._imap.on('mail', function (count) {
                 stream._search()
             })
@@ -29,7 +34,9 @@ function mailstream (options, callback) {
         })
     })
 
-    stream._imap.once('error', function (e) { callback(e) })
+    stream._imap.once('error', function (e) {
+        callback(e)
+    })
     stream._imap.connect()
 }
 
