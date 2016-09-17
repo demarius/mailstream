@@ -24,6 +24,7 @@ var test = cadence(function (async) {
             console.log(mail)
         })
 
+        /*
         mailer.sendMail({
             from: 'test@testing.mailstream.com',
             to: 'randomimapaddress@gmx.com',
@@ -33,11 +34,16 @@ var test = cadence(function (async) {
                 'mailstream-test-header': 'mailstream-test'
             }
         }, async())
+        */
+       async()
 
-    }, function () {
+    }, function (err) {
+        console.log(err.message)
         console.log('failure', arguments)
     })
 })(function (err) {
     console.log('mailstream args', arguments)
-    if (err) throw err
+    if (err) {
+        console.log(err.message)
+    }
 })
